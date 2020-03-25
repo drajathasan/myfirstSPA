@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="id">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="js/vue.min.js"></script>
+  <script src="js/vue-router.min.js"></script>
+  <title>Single Page Application Vue.js</title>
+</head>
+<body>
+  <div id="spa"><!-- elemen root/utama dari SPA Vue -->
+    <!--  Navigasi utama aplikasi SPA
+          perhatikan tag "router-link" adalah tag khusus untuk membuat hyperlink ke router Vue -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <router-link class="navbar-brand" to="/">SPA Vue.js</router-link>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigasi" 
+        aria-controls="navigasi" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navigasi">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <router-link class="nav-link" to="/">Home</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/berita">Berita</router-link>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- link dari "router-link" di atas akan merender view masing2 di dalam tag "router-view" -->
+    <div id="main-content">
+      <router-view></router-view>
+    </div>
+  </div>
+
+  <!-- template view untuk komponen "Berita" -->
+  <script type="text/x-template" id="berita">
+    
+    </div>
+  </script>
+
+  <!-- kode javascript untuk menjalankan Vue.js -->
+  <script type="module">
+        import Home from './sections/home.js'
+        import Berita from './sections/Berita.js'
+        
+    
+        // 2. Definisikan routing menuju komponen
+        const routes = [
+            { path: '/', component: Home},
+            { path: '/berita', component: Berita }
+        ]
+        
+        // 3. Buat instance Router Vue
+        const router = new VueRouter({ routes })
+        
+        // 4. Tempelkan instance "router" ke App Vue
+        const spa = new Vue(
+            { 
+            router,
+            methods : {
+                setAlert(){
+                    alert()
+                }
+            } 
+            }
+            ).$mount('#spa');
+  </script>
+</body>
+</html>
